@@ -1,0 +1,132 @@
+// vim: softtabstop=4 shiftwidth=4 nobackup
+
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "memory", "cpu", "network", "clock"],
+
+    "sway/window": {
+        "icon": true,
+        "icon-size": 20,
+        "max-length": 50
+    },
+
+    "sway/workspaces": {
+        "format": "{icon} {name}",
+        "format-icons": {
+            "1": "<span foreground=\"orange\"></span>",
+            "2": "<span foreground=\"orange\"></span>",
+            "3": "<span foreground=\"orange\"></span>",
+            "4": "<span foreground=\"orange\"></span>",
+            "5": "<span foreground=\"orange\">󱎏</span>",
+            "6": "<span foreground=\"orange\">󰈹</span>",
+            "7": "<span foreground=\"orange\"></span>",
+            "8": "<span foreground=\"orange\"></span>",
+            "9": "<span foreground=\"orange\">󰒖</span>",
+            "10": "<span foreground=\"orange\">󱩓</span>",
+            "urgent": "<span foreground=\"gold\"></span>",
+        }
+    },
+
+    "sway/mode": {
+        "on-click": "swaymsg mode 'default'"
+    },
+
+    "sway/language": {
+        "format": "{}",
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "pulseaudio": {
+        "format-low": "<span foreground=\"palegoldenrod\">{volume}%</span> 󰕿",
+        "format-medium": "<span foreground=\"palegoldenrod\">{volume}%</span> 󰖀",
+        "format-high": "<span foreground=\"palegoldenrod\">{volume}%</span> 󰕾",
+        "format-muted": "muted 󰖁",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+
+        "states": {
+            "low": 33,
+            "medium": 66,
+            "high": 100,
+        },
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "tooltip": true,
+        "tooltip-format": "{used} GiB",
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "{}% ",
+        "format-icons": [
+            "<span color='#69ff94'>▁</span>", // green
+            "<span color='#2aa9ff'>▂</span>", // blue
+            "<span color='#f8f8f2'>▃</span>", // white
+            "<span color='#f8f8f2'>▄</span>", // white
+            "<span color='#ffffa5'>▅</span>", // yellow
+            "<span color='#ffffa5'>▆</span>", // yellow
+            "<span color='#ff9977'>▇</span>", // orange
+            "<span color='#dd532e'>█</span>"  // red
+        ]
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "interval": 1,
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "Connected <span foreground=\"palegoldenrod\">󰞉</span>",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": "🌐",
+        "tooltip": true,
+        "tooltip-format": "<span foreground=\"lightpink\">   Upload: {bandwidthUpBytes}</span> <span foreground=\"lightgreen\">
+        Download: {bandwidthDownBytes}</span>",
+    },
+
+    "clock": {
+        "format": "{:%H:%M}  ",
+        "format-alt": "{:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "month",
+                    "mode-mon-col"  : 3,
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='hotpink'><b>{}</b></span>",
+                              "days":       "<span color='lightblue'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='gold'><b>{}</b></span>",
+                              "today":      "<span color='yellow'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+}

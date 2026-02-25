@@ -1,0 +1,6 @@
+input type:keyboard {
+xkb_layout br
+xkb_numlock enabled
+}
+
+# vim: nobackup

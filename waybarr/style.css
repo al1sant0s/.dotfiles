@@ -1,0 +1,115 @@
+/*
+vim: softtabstop=4 shiftwidth=4 nobackup
+*/
+
+* {
+    font-family: '0xProtoNerdFont', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    min-height: 24px;
+}
+
+window#waybar {
+    background: rgba(148, 76, 0, 0.2);
+    border-bottom: 3px double rgba(100, 114, 125, 0.5);
+    color: palegoldenrod;
+}
+
+tooltip {
+    background-color: rgba(6, 64, 97, 0.5);
+    border: 3px double rgba(100, 114, 125, 0.5);
+}
+
+tooltip label {
+    color: pink;
+}
+
+#workspaces button {
+    background-color: #8a8767;
+    color: #d9d0ab;
+    padding: 3px 15px;
+    border-radius: 10px;
+    /* border-bottom: 3px solid aquamarine; */
+    margin: 5px 1px 5px 1px;
+}
+
+#workspaces button.focused {
+    background: #4d4336;
+    /* border-bottom: 3px solid aqua; */
+}
+
+.modules-left{
+    padding-left: 5px;
+}
+
+.modules-center{
+    background-color: #8a8767;
+    color: pink;
+    padding: 0 20px;
+    border-radius: 5px;
+    margin: 5px 10px 5px 10px;
+}
+
+.modules-right{
+    background-color: #87833a;
+    margin: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+#mode {
+    background-color: palegoldenrod;
+    color: black;
+    border: 2px dashed black;
+    border-radius: 5px;
+    padding: 0 8px;
+    margin: 5px 1px 5px 20px;
+}
+
+
+#idle_inhibitor,
+#pulseaudio,
+#language,
+#memory,
+#cpu,
+#network,
+#clock {
+    padding: 0 10px;
+    border-left-style: inset;
+    border-width: 0pt;
+    border-color: #458782;
+}
+
+#idle_inhibitor {
+    padding-right: 20px;
+    /* color: springgreen; */
+}
+
+#memory{
+    /* color: lime; */
+}
+
+#battery {
+    background-color: #ffffff;
+    color: black;
+}
+
+#battery.charging {
+    color: white;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
